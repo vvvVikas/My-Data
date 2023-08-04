@@ -1,0 +1,21 @@
+package httpRequests;
+
+import io.restassured.RestAssured;
+import io.restassured.http.Method;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+
+public class TC002_POST {
+	
+	void postRequest() {
+		RestAssured.baseURI="https://reqres.in/api/users";
+		RequestSpecification httpreq= RestAssured.given();
+		
+		Response response = httpreq.request(Method.GET,"/");
+		 
+		// print thhis response
+		
+		String responseBody=response.getBody().asString();
+	}
+
+}

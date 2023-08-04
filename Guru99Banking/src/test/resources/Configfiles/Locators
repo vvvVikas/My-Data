@@ -1,0 +1,5 @@
+signInLink=Sign in
+email=//*[@id="login_id"]
+next = //*[@id="nextbtn"]/span
+password= //*[@id="password"]
+signIn = //*[@id="nextbtn"]/span

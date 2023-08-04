@@ -1,0 +1,38 @@
+package httpRequests;
+
+import java.net.http.HttpRequest;
+
+import org.json.simple.JSONObject;
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+import io.restassured.http.Method;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+
+public class TC003_POST_DataDriven {
+	
+	//{"name":"test","salary":"123","age":"23"}
+
+	@Test
+	public void dataDriven() {
+		
+		RestAssured.baseURI="https://dummy.restapiexample.com/api/v1";
+		RequestSpecification httpreq= RestAssured.given();
+		JSONObject requestBody= new JSONObject();  // need to pass the body for POST method with JSONObject class instance
+		requestBody.put("name", "test");
+		requestBody.put("salary", "123");
+		requestBody.put("age", "21");
+		
+		//now convert this body to json format
+		httpreq.body(requestBody.toJSONString());
+		
+		//now get the response 
+		Response res= httpreq.request(Method.POST,"/create");
+		
+		String responseBody= res.getBody().asString();
+		System.out.println(responseBody);
+		
+	}
+	
+}

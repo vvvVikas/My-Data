@@ -1,0 +1,27 @@
+package httpRequests;
+
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+import io.restassured.http.Method;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+
+public class TC001_GET {
+	
+	@Test
+	void getRequest() {
+		RestAssured.baseURI="https://demoqa.com/BookStore/v1/Books";
+		RequestSpecification httpreq= RestAssured.given();
+		
+		Response response = httpreq.request(Method.GET,"/");
+		 
+		// print thhis response
+		
+		String responseBody=response.getBody().asString();
+		System.out.println(responseBody);
+		
+		
+	}
+
+}
